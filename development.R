@@ -6,7 +6,7 @@
 
 # Binary classifier --------
 
-  test_binary <- binary_SeSp(prevalence = 0.5,
+  test_binary <- binary_SeSp(prevalence = 0.05,
                              n = 10000,
                              Se = 0.75,
                              Sp = 0.85)

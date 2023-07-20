@@ -116,9 +116,9 @@
     two_summary <- caret::twoClassSummary(as.data.frame(data), lev = levs)
 
     tibble::tibble(n = nrow(data),
-                   n_events = sum(as.numeric(data$obs) - 1),
+                   n_events = nrow(data) - sum(as.numeric(data$obs) - 1),
                    n_predicted = nrow(data) - sum(as.numeric(data$pred) - 1),
-                   prev_events = sum(as.numeric(data$obs) - 1)/nrow(data),
+                   prev_events = (nrow(data) - sum(as.numeric(data$obs) - 1))/nrow(data),
                    prev_predicted = (nrow(data) - sum(as.numeric(data$pred) - 1))/nrow(data),
                    accuracy = def_summary['Accuracy'],
                    kappa = def_summary['Kappa'],
