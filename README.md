@@ -1,3 +1,5 @@
+[![R](https://github.com/PiotrTymoszuk/simOutcome/actions/workflows/r.yml/badge.svg)](https://github.com/PiotrTymoszuk/simOutcome/actions/workflows/r.yml)
+
 # simOutcome
 Simulation of Outcomes for Classification and Regression Models
 
