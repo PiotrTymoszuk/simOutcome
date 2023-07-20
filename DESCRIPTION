@@ -1,0 +1,23 @@
+Package: simOutcome
+Type: Package
+Title: Simulation of Outcomes for Classification and Regression Models
+Version: 0.1.0
+Maintainer: Piotr Tymoszuk <piotr.s.tymoszuk@gmail.com>
+Description: A still growing development package that simulated continuous, 
+    as well as binary and multi-categorical modeling outcomes with 
+    user-specified characteristics such as error, specificity, sensitivity, 
+    kappa or Brier score.
+License: GPL-3
+Encoding: UTF-8
+LazyData: true
+Authors@R: 
+    person("Piotr", "Tymoszuk", , "piotr.s.tymoszuk@gmail.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0002-0398-6034"))
+Imports: 
+    car,
+    caret,
+    dplyr,
+    purrr,
+    tibble
+RoxygenNote: 7.2.3
+Roxygen: list(markdown = TRUE)
