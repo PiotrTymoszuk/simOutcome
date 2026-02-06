@@ -71,14 +71,14 @@
     ## generation of the data frame ---------
 
     pos_data <-
-      tibble::tibble(outcome = rep(1, n_pos),
-                     predicted = c(rep(1, true_pos),
-                                   rep(0, false_neg)))
+      tibble(outcome = rep(1, n_pos),
+             predicted = c(rep(1, true_pos),
+                           rep(0, false_neg)))
 
     neg_data <-
-      tibble::tibble(outcome = rep(0, n - n_pos),
-                     predicted = c(rep(0, true_neg),
-                                   rep(1, false_pos)))
+      tibble(outcome = rep(0, n - n_pos),
+             predicted = c(rep(0, true_neg),
+                           rep(1, false_pos)))
 
     out_data <- rbind(pos_data, neg_data)
 

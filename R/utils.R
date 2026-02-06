@@ -93,38 +93,38 @@
 
     ## class probabilities ---------
 
-    data <- dplyr::transmute(data,
-                             obs = outcome,
-                             pred = predicted)
+    data <- transmute(data,
+                      obs = outcome,
+                      pred = predicted)
 
     levs <- c('positive', 'negative')
 
-    data <- purrr::map_dfc(data,
-                           car::recode,
-                           "1 = 'positive'; 0 = 'negative'")
+    data <- map_dfc(data,
+                    car::recode,
+                    "1 = 'positive'; 0 = 'negative'")
 
-    data <- purrr::map_dfc(data, factor, levs)
+    data <- map_dfc(data, factor, levs)
 
-    data <- dplyr::mutate(data,
-                          `positive` = as.numeric(pred) - 1,
-                          `negative` = 2 - as.numeric(pred))
+    data <- mutate(data,
+                   `positive` = as.numeric(pred) - 1,
+                   `negative` = 2 - as.numeric(pred))
 
     ## stats ---------
 
-    def_summary <- caret::defaultSummary(as.data.frame(data), lev = levs)
+    def_summary <- defaultSummary(as.data.frame(data), lev = levs)
 
-    two_summary <- caret::twoClassSummary(as.data.frame(data), lev = levs)
+    two_summary <- twoClassSummary(as.data.frame(data), lev = levs)
 
-    tibble::tibble(n = nrow(data),
-                   n_events = nrow(data) - sum(as.numeric(data$obs) - 1),
-                   n_predicted = nrow(data) - sum(as.numeric(data$pred) - 1),
-                   prev_events = (nrow(data) - sum(as.numeric(data$obs) - 1))/nrow(data),
-                   prev_predicted = (nrow(data) - sum(as.numeric(data$pred) - 1))/nrow(data),
-                   accuracy = def_summary['Accuracy'],
-                   kappa = def_summary['Kappa'],
-                   Se = two_summary['Sens'],
-                   Sp = two_summary['Spec'],
-                   AUC = 1 - two_summary['ROC'])
+    tibble(n = nrow(data),
+           n_events = nrow(data) - sum(as.numeric(data$obs) - 1),
+           n_predicted = nrow(data) - sum(as.numeric(data$pred) - 1),
+           prev_events = (nrow(data) - sum(as.numeric(data$obs) - 1))/nrow(data),
+           prev_predicted = (nrow(data) - sum(as.numeric(data$pred) - 1))/nrow(data),
+           accuracy = def_summary['Accuracy'],
+           kappa = def_summary['Kappa'],
+           Se = two_summary['Sens'],
+           Sp = two_summary['Spec'],
+           AUC = 1 - two_summary['ROC'])
 
   }
 
